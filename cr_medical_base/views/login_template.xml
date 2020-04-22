@@ -1,0 +1,23 @@
+<odoo>
+
+<!--    <template id="login_layout_medical" inherit_id="web.login" name="You can write the name of your theme">-->
+<!--    <xpath expr="//body/div[@id='wrap']" position="attributes">-->
+<!--        <attribute name="style">background-color: #333;</attribute>-->
+<!--    </xpath>-->
+<!--    </template>-->
+<!--   <template id="login_layout_medical" inherit_id="web.login" name="Website Logi" priority="20">-->
+<!--    <xpath expr="t" position="inside">-->
+<!--        <t t-call="web.login_layout">-->
+<!--             <div class="oe_login_logo"><img src='/web/static/src/img/login.jpeg'/></div>-->
+<!--        </t>-->
+<!--    </xpath>-->
+<!--</template>-->
+    <template id="login_layout" inherit_id="web.login_layout" name="Website Login Layout" priority="20">
+        <xpath expr="//t/div" position="inside">
+            <t t-call="website.layout">
+                <div class="oe_single_form_logo"><img src='/web/static/src/img/login.jpeg'/></div>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_category_medial">
+            <field name="name">CR Medical</field>
+            <field name="description">Helps you handle your quotations, sale orders and invoicing.</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="group_patient" model="res.groups">
+            <field name="name">Is Patient</field>
+            <field name="category_id" ref="module_category_medial"/>
+<!--            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+            <field name="comment">the user will have access to all records of everyone in the sales application.</field>
+        </record>
+
+        <record model="res.groups" id="group_doctor">
+            <field name="name">Is Doctor</field>
+            <field name="category_id" ref="module_category_medial"/>
+            <field name="model_id" ref="model_res_partner"/>
+<!--            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+        </record>
+
+        <data noupdate="0">
+            <record model="ir.rule" id="doctor_show">
+                <field name="name">Only Doctor Can Show</field>
+                <field name="model_id" ref="model_res_partner"/>
+                <field name="domain_force">[('user_id','=',user.id)]</field>
+                <field name="groups" eval="[(4, ref('cr_medical_base.group_doctor'))]"/>
+            </record>
+
+            <record model="ir.rule" id="patient_show">
+                <field name="name">Only Patient Can Show</field>
+                <field name="model_id" ref="model_res_partner"/>
+                <field name="domain_force">[('user_id','=',user.id)]</field>
+                <field name="groups" eval="[(4, ref('cr_medical_base.group_patient'))]"/>
+            </record>
+
+            <record model="ir.rule" id="opd_show">
+                <field name="name">Only Patient Can Show Own Opd</field>
+                <field name="model_id" ref="model_opd_opd"/>
+                <field name="domain_force">[('patient_id.user_id','=',user.id)]</field>
+                <field name="groups" eval="[(4, ref('cr_medical_base.group_patient'))]"/>
+            </record>
+        </data>
+    </data>
+</odoo>

@@ -1,0 +1,283 @@
+<odoo>
+    <template id="medical_homepage" inherit_id="website.homepage">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="oe_structure">
+                <t t-name="website.test-info">
+                    <!--                    <t t-call="website.layout">-->
+                    <div id="wrap" class="oe_structure oe_empty">
+                        <section
+                                class="s_cover parallax s_parallax_is_fixed bg-black-50 pt96 s_parallax_no_overflow_hidden pb128"
+                                data-scroll-background-ratio="1" style="background-image: /cr_medical_base/static/src/img/main_image.jpeg">
+                            <span class="s_parallax_bg oe_img_bg oe_custom_bg"
+                                  style="background-image: url(&quot;/cr_medical_base/static/src/img/main_image.jpeg&quot;); background-position: 50% 0px;"/>
+                            <div class="container">
+                                <div class="row s_nb_column_fixed">
+                                    <div class="col-lg-12 s_title" data-name="Title">
+                                        <h1 class="s_title_transparent" style="font-size: 62px; text-align: center;">The
+                                            Candidroot World of Care
+                                        </h1>
+                                    </div>
+                                    <div class="col-lg-12 s_text pt16 pb16" data-name="Text">
+                                        <p class="lead" style="text-align: center;">The Best Of Modern Healthcare To
+                                            Ensure You Stay healthy And Always.
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-12 s_btn text-center pt16 pb16" data-name="Buttons">
+                                        <a href="/aboutus" class="btn btn-delta rounded-circle" data-original-title=""
+                                           title="" aria-describedby="tooltip425938">About us
+                                        </a>
+                                        <a href="/contactus"
+                                           class="btn btn-primary rounded-circle o_default_snippet_text">Contact us
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="s_text_image pt32 pb0 o_bg_img_opt_custom oe_img_bg oe_custom_bg"
+                                 style="background-size: auto; background-position: 100% 30%; background-color: rgb(206, 222, 231); background-image: url(&quot;/cr_medical_base/static/src/img/cariology1.jpg&quot;);">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6 pt16 pb16">
+                                        <h2>Cardiology</h2>
+                                        <p>The Candidroot Heart Institutes are regarded as one of the best heart
+                                            hospitals in India, performing a multitude of treatments and procedures in
+                                            cardiology and cardiothoracic surgery. The scorecard shows an unmatched
+                                            record of over 1,52,000 cardiac and cardiothoracic surgeries.
+                                        </p>
+                                        <p>
+                                            <br/>
+                                        </p>
+                                        <p>We have vast experience in the most complicated coronary artery bypass
+                                            surgery, surgery for all types of valvular heart diseases, paediatric heart
+                                            surgery, adult and paediatric heart transplantation with success rates
+                                            comparable to international standards.
+                                        </p>
+                                        <div class="s_btn text-left pt16 pb16">
+                                            <a href="#" class="btn btn-outline-primary">Discover more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="s_text_image pt32 bg-300 oe_img_bg oe_custom_bg o_bg_img_opt_custom pb32"
+                                 style="background-image: url(&quot;/cr_medical_base/static/src/img/orthopedics.jpeg&quot;); background-size: 40% 80%; background-position: 10% 60%;">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="pt16 pb16 col-lg-6 offset-lg-6">
+                                        <h2 style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; color: rgb(170, 170, 170); font-size: 27px; padding: 0px; background-color: rgb(219, 228, 237);">
+                                            Orthopedics
+                                        </h2>
+                                        <p>The Candidroot Institutes of Orthopedics is regarded as one of the best &amp;amp;
+                                            top orthopedics hospitals in India with a legacy of innovation and
+                                            excellence. The Institutes are at the forefront in offering the latest in
+                                            Orthopedic treatments and Orthopedic surgical advancements in India on par
+                                            with the best centres in the world.
+                                        </p>
+                                        <p>
+                                            <br/>
+                                        </p>
+                                        <p>Apollo Hospitals offers key &amp;amp; best orthopedic surgeries and
+                                            procedures in India. We perform bone and joint replacement surgeries which
+                                            include the most current Arthroscopic and Reconstructive techniques.
+                                        </p>
+                                        <div class="s_btn text-left pt16 pb16"><a href="#"
+                                                                                  class="btn btn-outline-primary o_default_snippet_text">
+                                            Discover more</a>`
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="s_text_image pt32 oe_img_bg oe_custom_bg o_bg_img_opt_custom pb0"
+                                 style="background-color: rgb(206, 222, 231); background-image: url(&quot;/cr_medical_base/static/src/img/oncology.jpeg&quot;); background-size: 50% 80%; background-position: 100% 30%;">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6 pt16 pb16">
+                                        <h2>Oncology</h2>
+                                        <p>Cancer is a ruthless disease. It evolves constantly and spreads relentlessly.
+                                            It's hard to catch and even harder to treat.
+                                        </p>
+
+                                        <p>But that is about to change, with Precision Oncology. Apollo's unique
+                                            approach to diagnosing, treating and monitoring cancer that is as precise as
+                                            it can get.
+                                        </p>
+
+                                        <p>Cancer is Conquerable. And you can conquer it too. With precision, with
+                                            Apollo Hospitals. Stay a step ahead of cancer with Apollo Cancer Centres.
+                                        </p>
+                                        <div class="s_btn text-left pt16 pb16" data-name="Buttons">
+                                            <a href="#" class="btn btn-primary o_default_snippet_text">Learn more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="pt32 pb0">
+                            <div class="container">
+                                <div class="row s_nb_column_fixed">
+                                    <div class="col-lg-12 s_title pb16 pt0" style="text-align: center;">
+                                        <h1 class="s_title_small_caps">
+                                            <font style="color: rgb(99, 99, 99);">Centres of Excellence</font>
+                                            <br/>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="s_features bg-beta oe_custom_bg pb0 pt0" style="">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-2 pb0 pt48 text-center rounded">
+                                        <br/>
+                                        <img class="img-fluid o_we_custom_image padding-medium rounded rounded-circle"
+                                             src="/cr_medical_base/static/src/img/cardio.jpeg" data-original-title="" title=""
+                                             aria-describedby="tooltip756464"/>
+                                        <h3>
+                                            <br/>
+                                        </h3>
+                                        <h3>
+                                            <br/>
+                                        </h3>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            Cardiology
+                                        </h5>
+                                        <p></p>
+                                    </div>
+                                    <div class="col-lg-3 pb0 pt64 text-center rounded">
+                                        <img class="img-fluid o_we_custom_image padding-medium"
+                                             src="/cr_medical_base/static/src/img/onco.jpeg" data-original-title="" title=""
+                                             aria-describedby="tooltip908351"/>
+                                        <h3>
+                                        </h3>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+
+
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+
+
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            Oncology
+                                        </h5>
+                                        <p>
+
+
+                                        </p>
+                                    </div>
+                                    <div class="text-center pb0 col-lg-2 pt104 rounded">
+                                        <img class="img-fluid o_we_custom_image rounded-circle padding-medium"
+                                             src="/cr_medical_base/static/src/img/ortho.jpeg" data-original-title="" title=""
+                                             aria-describedby="tooltip764497"/>
+                                        <h3>&amp;nbsp;</h3>
+                                        <h5 class="acr-txt"
+                                            style="box-sizing: border-box; margin: 0px; font-family: inherit; font-weight: 600; line-height: 1.2; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="box-sizing: border-box; margin: 0px; font-family: inherit; font-weight: 600; line-height: 1.2; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="box-sizing: border-box; margin: 0px; font-family: inherit; font-weight: 600; line-height: 1.2; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="box-sizing: border-box; margin: 0px; font-family: inherit; font-weight: 600; line-height: 1.2; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            Orthopaedics
+                                        </h5>
+                                        <h3>
+                                            <div class="col-sm-2 col-xs-4"
+                                                 style="width: 190px; -webkit-box-flex: 0; flex-basis: 16.6667%; max-width: 16.6667%; margin-bottom: 20px;"/>
+                                        </h3>
+                                        <p>
+                                            <br/>
+                                        </p>
+                                    </div>
+                                    <div class="text-center pb0 col-lg-2 pt120 rounded">
+                                        <img class="img-fluid o_we_custom_image rounded-circle padding-medium"
+                                             src="/cr_medical_base/static/src/img/neurology.jpeg" data-original-title="" title=""
+                                             aria-describedby="tooltip825541"/>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            Neurology
+                                        </h5>
+                                    </div>
+                                    <div class="text-center col-lg-3 pb0 pt64 rounded">
+                                        <img class="img-fluid o_we_custom_image padding-medium"
+                                             src="/cr_medical_base/static/src/img/gastro.jpeg" data-original-title="" title=""
+                                             aria-describedby="tooltip911541"/>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            <br/>
+                                        </h5>
+                                        <h5 class="acr-txt"
+                                            style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-family: Arial; font-weight: 600; color: rgb(34, 34, 34); font-size: 1rem; padding: 0px;">
+                                            Gastroenterology
+                                        </h5>
+                                        <p>
+                                            <br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </t>
+            </div>
+
+            <!--                </t>-->
+
+
+        </xpath>
+    </template>
+</odoo>

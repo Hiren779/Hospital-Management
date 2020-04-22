@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cr_patient_tree_view" model="ir.ui.view">
+        <field name="name">res.partner.tree</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="patient">
+                <field name="name" />
+                <field name="sex"/>
+                <field name="age"/>
+                <field name="sex"/>
+                <field name="blood_group"/>
+                <field name="date_of_birth"/>
+                <field name="marital_status"/>
+                <field name="state"/>
+<!--                <field name="user_id"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="cr_patient_form_view" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <header>
+                     <button attrs="{'invisible':[('state','in',['draft','approve','reject'])]}"
+                            name="create_user" string="Confirm" type="object" class="oe_highlight"/>
+                    <button attrs="{'invisible':[('state','in',['draft','approve','reject'])]}"
+                            name="cancel" string="Reject" type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,pending,approve"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+<!--                            <button class="click_the_button" string="Appointments" type="object" name="toggle_active" icon="fa-calendar"/>-->
+                            <button class="click_the_button" string="Invoices" type="object" name="toggle_active" icon="fa-pencil-square-o"/>
+                    </div>
+
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Patient Name"/>
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="Name" required="True"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="date_of_birth" required="True"/>
+                            <field name="age" readonly="True" force_save="1"/>
+                        </group>
+                        <group>
+                            <field name="sex" required="True"/>
+                            <field name="blood_group" required="True"/>
+                            <field name="marital_status"/>
+                            <field name="user_id"/>
+                            <field name="is_patient" invisible="1"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Personal" name="personal_info">
+                            <group>
+                                <group>
+                                    <label for="street" string="Address"/>
+                                        <div class="o_address_format" name="div_address">
+                                        <field name="street" placeholder="Street..." class="o_address_street"/>
+                                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                        <field name="city" placeholder="City" class="o_address_city"/>
+                                        <field name="state_id" placeholder="State"/>
+                                        <field name="country_id" placeholder="Country"/>
+                                        </div>
+                                </group>
+                                <group>
+                                    <field name="email"/>
+                                    <field name="mobile" required="True"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Pharmacy History">
+                            <field name="pharmacy_history_line_ids" readonly="1">
+                                <tree>
+                                    <field name="doctor_id"/>
+                                    <field name="pharmacy_id"/>
+                                     <field name="medicine_id"/>
+                                     <field name="prescriptionDate"/>
+                                    <field name="treatment_period"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Laboratory History">
+                            <field name="laboratory_history_line_ids" readonly="1">
+                                <tree>
+                                    <field name="doctor_id"/>
+                                    <field name="lab_id"/>
+                                    <field name="prescriptionDate"/>
+<!--                                    <field name="p_test_ids"/>-->
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="patient_search_view" model="ir.ui.view">
+        <field name="name">res.partner.search</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search string="Search Sales Order">
+                <field name="name"/>
+                <field name="age"/>
+                <filter string="Age" name="age" domain="[('age','>', 18)]"  help="To Search Adult"/>
+                <filter string="Name" name="name" domain="[('name', '=', 'bbb')]" help="To search same name"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Age" name="age" domain="[]" context="{'group_by':'age'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_cr_patient_information" model="ir.actions.act_window">
+        <field name="name">Patient Information</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_patient','=',True)]</field>
+        <field name="context">{'default_is_patient':True}</field>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                     (0, 0, {'view_mode': 'tree', 'view_id': ref('cr_patient_tree_view')}),
+                     (0, 0, {'view_mode': 'form', 'view_id': ref('cr_patient_form_view')})]"/>
+    </record>
+
+    
+<!--    <record model="ir.actions.act_window" id="action_cr_patient_information">-->
+<!--        <field name="name">Patient Information</field>-->
+<!--        <field name="type">ir.actions.act_window</field>-->
+<!--        <field name="res_model">patient.patient</field>-->
+<!--        <field name="view_mode">tree,form</field>-->
+<!--        <field name="search_view_id" ref="patient_search_view"/>-->
+<!--        <field name="help" type="html">-->
+<!--          <p class="o_view_nocontent_empty_folder">-->
+<!--            patient information-->
+<!--          </p>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+
+
+    <menuitem id="cr_medical_menu_root" name="CR Medical" sequence="1" active="True"/>
+
+    <menuitem id="cr_menu_patient" name="Patient" parent="cr_medical_base.cr_medical_menu_root" active="True" sequence="1"/>
+    <menuitem id="cr_menu_patient_information"
+        name="Patient Information"
+        action="cr_medical_base.action_cr_patient_information"
+        parent="cr_medical_base.cr_menu_patient"
+        active="True"
+        sequence="1"/>
+
+
+</odoo>

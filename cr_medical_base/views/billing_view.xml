@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cr_billing_tree_view" model="ir.ui.view">
+        <field name="name">billing.billing.tree</field>
+        <field name="model">billing.billing</field>
+        <field name="arch" type="xml">
+            <tree string="billing">
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="cr_billing_form_view" model="ir.ui.view">
+        <field name="name">billing.billing.form</field>
+        <field name="model">billing.billing</field>
+        <field name="arch" type="xml">
+            <form string="billing">
+                <sheet>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+<!--    <record id="billing_search_view" model="ir.ui.view">-->
+<!--        <field name="name">billing.billing.search</field>-->
+<!--        <field name="model">billing.billing</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <search string="Search Sales Order">-->
+<!--                <field name="name"/>-->
+<!--                <field name="age"/>-->
+<!--                <filter string="Age" name="age" domain="[('age','>', 18)]"  help="To Search Adult"/>-->
+<!--                <filter string="Name" name="name" domain="[('name', '=', 'bbb')]" help="To search same name"/>-->
+<!--                <separator/>-->
+<!--                <group expand="0" string="Group By">-->
+<!--                    <filter string="Age" name="age" domain="[]" context="{'group_by':'age'}"/>-->
+<!--                </group>-->
+<!--            </search>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record model="ir.actions.act_window" id="action_cr_billing_information">
+        <field name="name">Billing Information</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">billing.billing</field>
+        <field name="view_mode">tree,form</field>
+<!--        <field name="search_view_id" ref="patient_search_view"/>-->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_empty_folder">
+            billing information
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="cr_menu_billing" name="Billing" parent="cr_medical_base.cr_medical_menu_root" active="True" sequence="4"/>
+
+    <menuitem id="cr_menu_billing_information"
+        name="Billing Information"
+        action="cr_medical_base.action_cr_billing_information"
+        parent="cr_medical_base.cr_menu_billing"
+        active="True"
+        sequence="4"/>
+
+
+</odoo>

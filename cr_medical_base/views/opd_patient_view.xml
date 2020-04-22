@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cr_opd_patient_tree_view" model="ir.ui.view">
+        <field name="name">opd.opd.tree</field>
+        <field name="model">opd.opd</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="appointment_date"/>
+                <field name="select_time_id"/>
+                <field name="weekdays"/>
+                <field name="state" statusbar_visible="draft,pending,confirm,cancel"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="cr_opd_form_view" model="ir.ui.view">
+        <field name="name">opd.opd.form</field>
+        <field name="model">opd.opd</field>
+        <field name="arch" type="xml">
+            <form string="opd">
+                <header>
+                    <button attrs="{'invisible':[('state','in',['confirm','cancel','pending','sent'])]}"
+                            name="pending_appointment" string="Pending" type="object" class="oe_highlight"/>
+                    <button attrs="{'invisible':[('state','in',['draft','cancel','pending','sent'])]}"
+                            name="send_appointment" string="Send" type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,pending,confirm,sent,cancel"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" invisible="1"/>
+                            <field name="existing_patient_name"/>
+                            <field name="patient_id" options="{'no_create': True}"
+                                   attrs="{'readonly': [('state', 'in', ['confirm'])],'invisible': [('existing_patient_name','=',False)]}"
+                                   context="{'form_view_ref':'cr_medical_base.cr_patient_form_view'}"/>
+                            <field name='new_patient_name' attrs="{'invisible': [('existing_patient_name','=',True)]}" />
+                            <field name="doctor_id" options="{'no_create': True}" reqired="True"
+                                   attrs="{'readonly': [('state', 'in', ['confirm'])]}"
+                                   context="{'form_view_ref':'cr_medical_base.cr_doctor_form_view'}"/>
+                            <field name="available_day" readonly="True" force_save="1" reqired="True"
+                                   attrs="{'readonly': [('state', 'in', ['confirm'])]}"/>
+                            <field name="appointment_date" reqired="True"
+                                   attrs="{'readonly': [('state', 'in', ['confirm'])]}"/>
+                            <field name="weekdays" reqired="True" attrs="{'readonly': [('state', 'in', ['draft','confirm'])]}"/>
+                            <field name="select_time_id"
+                                   domain="[('doctor_id','=',doctor_id),('available_weekdays','=ilike',weekdays)]"
+                                   options="{'no_create': True}" required="1"
+                                   attrs="{'readonly': [('state', 'in', ['confirm'])]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Prescription Lines" name="prescription_lines"  attrs="{'readonly': [('state', 'in', ['sent'])],'invisible': [('state', 'in', ['draft','pending'])]}">
+                            <field name="prescription_line_ids">
+                                <tree editable="bottom">
+                                    <field name="prescription_type"/>
+                                    <field name='indication_id'/>
+                                    <field name="pharmacy_id"
+                                           attrs="{'invisible':[('prescription_type','in',['laboratory','ipd'])]}"/>
+                                    <field name="medicine_id" widget="many2many_tags"
+                                           attrs="{'invisible':[('prescription_type','in',['laboratory','ipd'])]}"/>
+                                    <field name="lab_id" domain="[('is_laboratory','=',True)]"
+                                           context="{'form_view_ref':'laboratory.cr_laboratory_form_view'}"
+                                           attrs="{'invisible':[('prescription_type','in',['pharmacy','ipd'])]}"/>
+                                    <field name='form_id'
+                                           attrs="{'invisible':[('prescription_type','in',['laboratory','ipd'])]}"/>
+                                    <field name='dose'
+                                           attrs="{'invisible':[('prescription_type','in',['laboratory','ipd'])]}"/>
+                                    <field name="treatment_period"
+                                           attrs="{'invisible':[('prescription_type','in',['laboratory','ipd'])]}"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+
+
+                        <page string="Personal" name="personal_info_new_patient"
+                        attrs="{'invisible': [('existing_patient_name','=',True)]}">
+                            <group>
+                                <group>
+                                    <field name="date_of_birth"/>
+                                    <field name="age"/>
+                                    <field name="blood_group"/>
+                                    <field name="sex"/>
+                                    <field name="email"/>
+                                    <field name="mobile"/>
+                                </group>
+                                <group>
+                                    <label for="street" string="Address"/>
+                                    <div class="o_address_format" name="div_address">
+                                        <field name="street" placeholder="Street..." class="o_address_street"/>
+                                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                        <field name="country_id" placeholder="Country"/>
+                                        <field name="state_id" placeholder="State"/>
+                                        <field name="city" placeholder="City" class="o_address_city"/>
+                                    </div>
+                                </group>
+
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_cr_opd_patient_information">
+        <field name="name">OPD Information</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">opd.opd</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="cr_opd_patient_tree_view"></field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                opd information
+            </p>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="doctor_appointment_search_view">
+        <field name="name">Doctor_Appointment_search_view</field>
+        <field name="model">opd.opd</field>
+        <field name="arch" type="xml">
+            <!--<field name="appointment_date"/>-->
+            <search>
+                <filter name="thisyear" string="This year"
+                        domain="[('appointment_date', '&gt;=', time.strftime('%%Y-01-01')), ('appointment_date', '&lt;=', time.strftime('%%Y-12-31'))]"/>
+                <group string="Group By">
+                    <filter name="weekdays" string="Weekdays" context="{'group_by':'weekdays'}"/>
+                    <filter string="Appointment Date" name="appointment_date"
+                            context="{'group_by':'appointment_date'}"/>
+                    <filter name="groupby_appointment_date_year" string="Appointment Year"
+                            context="{'group_by':'appointment_date:year'}"/>
+                    <filter name="groupby_appointment_date_week" string="Appointment week"
+                            context="{'group_by':'appointment_date:week'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <menuitem id="cr_menu_opd_patient" name="Outpatient/Appointment" parent="cr_medical_base.cr_medical_menu_root"
+              active="True" sequence="3"
+              groups="cr_medical_base.group_patient,cr_medical_base.group_doctor,base.group_erp_manager"/>
+
+    <menuitem id="cr_menu_opd_patient_information"
+              name="Opd Patient Information"
+              action="cr_medical_base.action_cr_opd_patient_information"
+              parent="cr_medical_base.cr_menu_opd_patient"
+              active="True"
+              sequence="3"/>
+</odoo>

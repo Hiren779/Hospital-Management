@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cr_pharmacy_prescription_tree_view" model="ir.ui.view">
+        <field name="name">pharmacy.prescription.tree</field>
+        <field name="model">pharmacy.prescription</field>
+        <field name="arch" type="xml">
+            <tree string="Doctor">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="prescriptionDate"/>
+                <field name ='indication_id'/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="cr_pharmacy_prescription__form_view" model="ir.ui.view">
+        <field name="name">pharmacy.prescription.form</field>
+        <field name="model">pharmacy.prescription</field>
+        <field name="arch" type="xml">
+            <form string="doctor">
+                <header>
+                    <button attrs="{'invisible':[('state','in',['done'])]}" name="cancel_prescription" string="Cancel" type="object" class="oe_highlight"/>
+                    <button attrs="{'invisible':[('state','in',['done','cancel'])]}" name="confirm_prescription" string="Done" type="object" class="oe_highlight"/>
+                     <field name="state" widget="statusbar" statusbar_visible="done,cancel"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" default_focus="1" attrs="{'readonly': [('state', 'in', ['done'])]}" readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="opd_id" domain="[('prescriptionType', '=', 'pharmacy')]"  attrs="{'readonly': [('state', 'in', ['done'])]}" />
+                             <field name="prescriptionDate"  attrs="{'readonly': [('state', 'in', ['done'])]}" />
+
+                        </group>
+                        <group>
+                             <field name="patient_id" placeholder="patient" domain="[('is_patient','=',True)]" attrs="{'readonly': [('state', 'in', ['done'])]}" />
+                             <field name="doctor_id" placeholder="Doctor" domain="[('is_doctor','=',True)]" attrs="{'readonly': [('state', 'in', ['done'])]}" />
+                            <field name="prescription_type" attrs="{'readonly': [('state', 'in', ['done'])]}" />
+                        </group>
+
+                        <group>
+                            <field name="pharmacy_id" attrs="{'readonly': [('state', 'in', ['done'])],'invisible': [('prescription_type', 'in', ['laboratory'])]}"/>
+                            <field name="medicine_id" widget="many2many_tags" attrs="{'readonly': [('state', 'in', ['done'])],'invisible': [('prescription_type', 'in', ['laboratory'])]}"/>
+                            <field name="indication_id" attrs="{'readonly': [('state', 'in', ['done'])],'invisible': [('prescription_type', 'in', ['laboratory'])]}"/>
+                            <field name="form_id" attrs="{'readonly': [('state', 'in', ['done'])],'invisible': [('prescription_type', 'in', ['laboratory'])]}"/>
+                            <field name="dose" attrs="{'readonly': [('state', 'in', ['done'])],'invisible': [('prescription_type', 'in', ['laboratory'])]}"/>
+                            <field name="treatment_period" attrs="{'readonly': [('state', 'in', ['done'])],'invisible': [('prescription_type', 'in', ['laboratory'])]}"/>
+                            <field name="dose" attrs="{'readonly': [('state', 'in', ['done'])],'invisible': [('prescription_type', 'in', ['laboratory'])]}"/>
+                        </group>
+                        <group>
+                            <field name="lab_id" domain="[('is_laboratory','=', True)]" attrs="{'readonly': [('state', 'in', ['done'])],'invisible': [('prescription_type', 'in', ['pharmacy'])]}"/>
+
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_cr_pharmacy_prescription_information">
+        <field name="name">Prescription</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pharmacy.prescription</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_empty_folder">
+            Prescription
+          </p>
+        </field>
+    </record>
+
+<!--    <menuitem id="pharmacy_prescription"-->
+<!--                  name="Pharmacy Prescription"-->
+<!--                  action="action_cr_pharmacy_prescription_information"-->
+<!--                  parent="cr_medical_base.cr_menu_doctor"-->
+<!--                  active="TRUE"/>-->
+
+</odoo>

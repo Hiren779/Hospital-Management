@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_doctor_doctor,access_doctor_doctor,model_res_partner,base.group_user,1,1,1,1
+access_opd_opd,access_opd_opd,model_opd_opd,base.group_user,1,1,1,1
+access_doctor_avalibility,access_doctor_avalibility,model_doctor_weeklyavalibility,base.group_user,1,1,1,1
+access_doctor_speciality,access_doctor_speciality,model_doctor_speciality,base.group_user,1,1,1,1
+access_doctor_degree,access_doctor_degree,model_doctor_degree,base.group_user,1,1,1,1
+access_available_appointment,access_available_appointment,model_available_appointment,base.group_user,1,1,1,1
+access_pharmacy_prescription,access_pharmacy_prescription,model_pharmacy_prescription,base.group_user,1,1,1,1
+access_disease_description,access_disease_description,model_disease_description,base.group_user,1,1,1,1
+access_medicine_from,access_medicine_from,model_medicine_from,base.group_user,1,1,1,1
+access_update_pharmacy_stock,access_update_pharmacy_stock,model_update_pharmacy_stock,base.group_user,1,1,1,1

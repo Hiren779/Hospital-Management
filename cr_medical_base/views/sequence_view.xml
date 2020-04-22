@@ -1,0 +1,55 @@
+<odoo>
+<!--    <data>-->
+<!--        <record id="appointment_number1" model="ir.sequence">-->
+<!--            <field name="name">patient_id</field>-->
+<!--            <field name="code">Patient ID</field>-->
+<!--            <field name="prefix">PA</field>-->
+<!--            <field name="padding">4</field>-->
+<!--            <field name="form_no"></field>-->
+<!--        </record>-->
+<!--    </data>-->
+
+<!--    <data>-->
+<!--        <record id="appointment_number_2" model="ir.sequence">-->
+<!--            <field name="name">doctor_id</field>-->
+<!--            <field name="code">Doctor ID</field>-->
+<!--            <field name="prefix">DO</field>-->
+<!--            <field name="padding">4</field>-->
+<!--            <field name="dr_form_no"></field>-->
+<!--        </record>-->
+<!--    </data>-->
+
+    <data>
+        <record id="sequence_appointment" model="ir.sequence">
+            <field name="name">sequence_appointment</field>
+            <field name="code">Appointment_seq</field>
+            <field name="prefix">AP</field>
+            <field name="padding">4</field>
+            <field name="name"></field>
+        </record>
+    </data>
+
+
+     <data>
+        <record id="sequence_pharmacy_prescription" model="ir.sequence">
+            <field name="name">sequence_pharmacy_prescription</field>
+            <field name="code">PharmacyPrescription</field>
+            <field name="prefix">PPR</field>
+            <field name="padding">4</field>
+            <field name="name"></field>
+        </record>
+    </data>
+
+    <data>
+        <record id="sequence_laboratory_prescription" model="ir.sequence">
+            <field name="name">sequence_laboratory_prescription</field>
+            <field name="code">LaboratoryPrescription</field>
+            <field name="prefix">LPR</field>
+            <field name="padding">4</field>
+            <field name="name"></field>
+        </record>
+    </data>
+
+</odoo>
+
+
